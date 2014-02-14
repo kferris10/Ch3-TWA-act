@@ -2,6 +2,7 @@ base
 car
 compare
 dplyr
+faraway
 fastR
 ggplot2
 gplots
@@ -11,7 +12,9 @@ lattice
 lme4
 MASS
 Matrix
+mice
 mosaic
+nnet
 pingr
 pitchRx
 plyr

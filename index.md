@@ -78,7 +78,7 @@ Separate boxes are given for each method-group combination.  The measurements fo
 ---
 ## Interaction Plots of the Tennis Ball Data
 
-An interaction plot of the tennis ball data is below.  This plot is pretty messy.  The lines are not parallel all the way across and they do cross at several places which is suggestive of an interaction.  The lines do follow a general pattern though.  Overall, I would say this plot does not provide strong evidence one way or another of an interaction.  We'll have to do an F test to be sure.
+An interaction plot of the tennis ball data is below.  This plot is pretty messy.  The lines are not parallel all the way across and they do cross at several places which is suggestive of an interaction.  The lines do follow the same general trend though.  Overall, I would say this plot does not provide strong evidence one way or another of an interaction.  We'll have to do an F test to be sure.
 
 
 ```r
@@ -107,10 +107,10 @@ with(warpbreaks, interaction.plot(tension, wool, breaks))
 
 Does the interaction plot suggest that the effect of tension depends on the type of wool?  You might want to take a look at the explanation even if you get the question right.  I think it's useful.
 
-1. Yes - the lines in the interaction plot are parallel
-2. No - the lines in the interaction plot are parallel
-3. _Yes - the lines in the interaction plot are not parallel_
-4. No - the lines in the interaction plot are not parallel
+1. Yes - the lines in the interaction plot are close to parallel
+2. No - the lines in the interaction plot are close to parallel
+3. _Yes - the lines in the interaction plot are not close to parallel_
+4. No - the lines in the interaction plot are not close to parallel
 
 *** .hint
 Take a look back at the interaction plot.  Is there a constant shift from wool A to wool B for all levels of tension?
@@ -121,7 +121,7 @@ At low tension, wool A has a lot more breaks than wool B.  At medium tension, ho
 --- 
 ## Interaction Model for Tennis Ball Data
 
-We'll start by fitting a model with and interaction and testing to see if the interaction is needed.  The interaction model is:
+We'll start by fitting a model with ans interaction and testing to see if the interaction is needed.  The interaction model is:
 
 $y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk}$
 
@@ -170,7 +170,7 @@ $df_A = J-1 = 3-1$
 
 $df_B = K-1 = 6-1$
 
-$df_{AB} = (J-1) * (K-1) = (3-1) * (2-1)$
+$df_{AB} = (J-1) * (K-1) = (3-1) * (6-1)$
 
 $df_E = N - (J * K) = 81 - (6 * 3)$
 
@@ -196,7 +196,7 @@ Here's a blank ANOVA Table for a model with an interaction for the warpbreaks da
 2. What is $df_B$?
 3. What is $df_{AB}$?
 4. What is $df_E$?
-5. What is $DF_{Total}$?
+5. What is $df_{Total}$?
 
 *** .hint
 The formulas for the degrees of freedom are on the previous slide
@@ -227,13 +227,13 @@ Here's the updated ANOVA table with a few numbers added to it.  We can fill in t
 |:-------------|---:|----------:|----------:|---------:|----------:|
 |method        |2   |       0.84|   $MS_A = SS_A / df_A$  |$F_{A} = MS_A / MS_E$ |          |
 |Group         |5   |     $SS_B$|      0.340|     $F_B = MS_B / MS_E$|          |
-|method:Group  |2   |  $SS_{AB}$|      0.076| $F_{AB} = MS_{AB} / MS_E$|          |
+|method:Group  |10   |  $SS_{AB}$|      0.076| $F_{AB} = MS_{AB} / MS_E$|          |
 |Residuals     |63  |       3.83|$MS_E= SS_E / df_E$     |          |          |
 |Total         |80  | $SS_{Total}$|       |          |           |
 
 $SS_B = MS_B * df_B = 0.340*5 = 1.7$
 
-$SS_{AB} = MS_{AB} * df_{AB} = 0.076 * 2 = 0.15$
+$SS_{AB} = MS_{AB} * df_{AB} = 0.076 * 10 = 0.76$
 
 $SS_{Total} = SS_A + SS_B + SS_{AB} + SS_E = 7.13$
 
@@ -277,7 +277,7 @@ $SS_{E} = MS_{E} * df_{E} = 119.69*48$
 $SS_{Total} = SS_A + SS_B + SS_{AB} + SS_E$
 4. <span class="answer">1017.15</span>
 $MS_{A} = SS_{A} / df_{A} = 2034.3/2$
-5. <span class="answer">450.</span>
+5. <span class="answer">450.7</span>
 $MS_{B} = SS_{B} * df_{B} = 450.7/1$
 
 ---
@@ -289,7 +289,7 @@ The F-statistics for each of the three rows are just the $MS$ for that row divid
 |:-------------|---:|----------:|----------:|---------:|----------:|
 |method        |2   |       0.84|   0.418   |$F_{A} = MS_A / MS_E$ |          |
 |Group         |5   |     1.7   |      0.340|     $F_B = MS_B / MS_E$|          |
-|method:Group  |2   |      0.15 |      0.076| $F_{AB} = MS_{AB} / MS_E$|          |
+|method:Group  |10   |      0.760 |      0.076| $F_{AB} = MS_{AB} / MS_E$|          |
 |Residuals     |63  |       3.83| 0.061     |          |          |
 |Total         |80  | 7.13      |       |          |           |
 
@@ -351,7 +351,7 @@ $F_A \sim F(2, 63)$
 
 $F_B \sim F(5, 63)$
 
-$F_{AB} \sim F(2, 63)$
+$F_{AB} \sim F(10, 63)$
 
 ---
 ## Testing for an Interaction in Tennis Ball Data
@@ -409,7 +409,7 @@ Which null hypotheses is being tested by the `wool:tension` row of the ANOVA tab
 4. $H_0: \mu_{11} = \mu_{12} = \ldots = \mu_{JK}$
 
 *** .hint
-Which greek coefficient corresponds to an interaction?
+Which Greek coefficient corresponds to an interaction?
 
 *** .explanation
 The $\omega$'s are used to represent the interaction effect.  So we want to test to see if they are equal to zero.  The alternative hypothesis is 
@@ -421,14 +421,14 @@ $H_A:$ at least one $\omega_{jk} \neq =$
 
 Based on the ANOVA table, is there evidence of an interaction between wool and tension at the $\alpha = 0.05$ significance level?
 
-1. Yes
+1. _Yes_
 2. No
 
 *** .hint
 Check the p-value testing whether there is an interaction
 
 *** .explanation
-The p-value testing for an interaction is 0.021 so we reject the null of no interaction and conclude that there is an interaction present.
+The p-value testing for an interaction is 0.021 so we reject the null of no interaction and decide that there is an interaction present.
 
 ---
 ## Next step for Tennis Ball Data
@@ -565,7 +565,7 @@ The Normal Q-Q plot looks okay for the warpbreaks data.  The histogram appears t
 ---
 ## Conclusion part 1
 
-Write down or email answers to these questions to Kevin
+Write down or email answers to these questions to your instructor.
 
 1. When looking at an interaction plot, what would suggest that an interaction is present?
 

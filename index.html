@@ -139,7 +139,7 @@ wool     L  M  H Total
     <h2>Interaction Plots of the Tennis Ball Data</h2>
   </hgroup>
   <article data-timings="">
-    <p>An interaction plot of the tennis ball data is below.  This plot is pretty messy.  The lines are not parallel all the way across and they do cross at several places which is suggestive of an interaction.  The lines do follow a general pattern though.  Overall, I would say this plot does not provide strong evidence one way or another of an interaction.  We&#39;ll have to do an F test to be sure.</p>
+    <p>An interaction plot of the tennis ball data is below.  This plot is pretty messy.  The lines are not parallel all the way across and they do cross at several places which is suggestive of an interaction.  The lines do follow the same general trend though.  Overall, I would say this plot does not provide strong evidence one way or another of an interaction.  We&#39;ll have to do an F test to be sure.</p>
 
 <pre><code class="r">with(tennis, interaction.plot(Group, method, diameter))
 </code></pre>
@@ -176,10 +176,10 @@ wool     L  M  H Total
   <p>Does the interaction plot suggest that the effect of tension depends on the type of wool?  You might want to take a look at the explanation even if you get the question right.  I think it&#39;s useful.</p>
 
 <ol>
-<li>Yes - the lines in the interaction plot are parallel</li>
-<li>No - the lines in the interaction plot are parallel</li>
-<li><em>Yes - the lines in the interaction plot are not parallel</em></li>
-<li>No - the lines in the interaction plot are not parallel</li>
+<li>Yes - the lines in the interaction plot are close to parallel</li>
+<li>No - the lines in the interaction plot are close to parallel</li>
+<li><em>Yes - the lines in the interaction plot are not close to parallel</em></li>
+<li>No - the lines in the interaction plot are not close to parallel</li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -205,7 +205,7 @@ wool     L  M  H Total
     <h2>Interaction Model for Tennis Ball Data</h2>
   </hgroup>
   <article data-timings="">
-    <p>We&#39;ll start by fitting a model with and interaction and testing to see if the interaction is needed.  The interaction model is:</p>
+    <p>We&#39;ll start by fitting a model with ans interaction and testing to see if the interaction is needed.  The interaction model is:</p>
 
 <p>\(y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk}\)</p>
 
@@ -322,7 +322,7 @@ wool     L  M  H Total
 
 <p>\(df_B = K-1 = 6-1\)</p>
 
-<p>\(df_{AB} = (J-1) * (K-1) = (3-1) * (2-1)\)</p>
+<p>\(df_{AB} = (J-1) * (K-1) = (3-1) * (6-1)\)</p>
 
 <p>\(df_E = N - (J * K) = 81 - (6 * 3)\)</p>
 
@@ -407,7 +407,7 @@ wool     L  M  H Total
 <li>What is \(df_B\)?</li>
 <li>What is \(df_{AB}\)?</li>
 <li>What is \(df_E\)?</li>
-<li>What is \(DF_{Total}\)?</li>
+<li>What is \(df_{Total}\)?</li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -474,7 +474,7 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 </tr>
 <tr>
 <td align="left">method:Group</td>
-<td align="right">2</td>
+<td align="right">10</td>
 <td align="right">\(SS_{AB}\)</td>
 <td align="right">0.076</td>
 <td align="right">\(F_{AB} = MS_{AB} / MS_E\)</td>
@@ -500,7 +500,7 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 <p>\(SS_B = MS_B * df_B = 0.340*5 = 1.7\)</p>
 
-<p>\(SS_{AB} = MS_{AB} * df_{AB} = 0.076 * 2 = 0.15\)</p>
+<p>\(SS_{AB} = MS_{AB} * df_{AB} = 0.076 * 10 = 0.76\)</p>
 
 <p>\(SS_{Total} = SS_A + SS_B + SS_{AB} + SS_E = 7.13\)</p>
 
@@ -611,7 +611,7 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 \(SS_{Total} = SS_A + SS_B + SS_{AB} + SS_E\)</li>
 <li><span class="answer">1017.15</span>
 \(MS_{A} = SS_{A} / df_{A} = 2034.3/2\)</li>
-<li><span class="answer">450.</span>
+<li><span class="answer">450.7</span>
 \(MS_{B} = SS_{B} * df_{B} = 450.7/1\)</li>
 </ol>
 
@@ -656,8 +656,8 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 </tr>
 <tr>
 <td align="left">method:Group</td>
-<td align="right">2</td>
-<td align="right">0.15</td>
+<td align="right">10</td>
+<td align="right">0.760</td>
 <td align="right">0.076</td>
 <td align="right">\(F_{AB} = MS_{AB} / MS_E\)</td>
 <td align="right"></td>
@@ -858,7 +858,7 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 <p>\(F_B \sim F(5, 63)\)</p>
 
-<p>\(F_{AB} \sim F(2, 63)\)</p>
+<p>\(F_{AB} \sim F(10, 63)\)</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -972,7 +972,7 @@ Residuals    48   5745     120
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-hint">
-  <p>Which greek coefficient corresponds to an interaction?</p>
+  <p>Which Greek coefficient corresponds to an interaction?</p>
 
 </div>
 <div class="quiz-explanation">
@@ -996,7 +996,7 @@ Residuals    48   5745     120
   <p>Based on the ANOVA table, is there evidence of an interaction between wool and tension at the \(\alpha = 0.05\) significance level?</p>
 
 <ol>
-<li>Yes</li>
+<li><em>Yes</em></li>
 <li>No</li>
 </ol>
 
@@ -1010,7 +1010,7 @@ Residuals    48   5745     120
 
 </div>
 <div class="quiz-explanation">
-  <p>The p-value testing for an interaction is 0.021 so we reject the null of no interaction and conclude that there is an interaction present.</p>
+  <p>The p-value testing for an interaction is 0.021 so we reject the null of no interaction and decide that there is an interaction present.</p>
 
 </div>
 </div>
@@ -1224,7 +1224,7 @@ hist(eij, main = &quot;Histogram of Residuals&quot;)
     <h2>Conclusion part 1</h2>
   </hgroup>
   <article data-timings="">
-    <p>Write down or email answers to these questions to Kevin</p>
+    <p>Write down or email answers to these questions to your instructor.</p>
 
 <ol>
 <li><p>When looking at an interaction plot, what would suggest that an interaction is present?</p></li>
