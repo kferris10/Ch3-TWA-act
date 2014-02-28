@@ -341,7 +341,7 @@ The F-statistics still follow an F distribution.  The numerator degrees of freed
 |:-------------|---:|----------:|----------:|---------:|----------:|
 |method        |2   |       0.84|   0.418   |  6.88 |          |
 |Group         |5   |     1.7   |      0.340|     5.59 |          |
-|method:Group  |2   |      0.15 |      0.076| 1.25   |          |
+|method:Group  |10   |      0.15 |      0.076| 1.25   |          |
 |Residuals     |63  |       3.83| 0.061     |          |          |
 |Total         |80  | 7.13      |       |          |           |
 
@@ -573,7 +573,7 @@ Write down or email answers to these questions to your instructor.
 
 3. What are the distribution of the F-statistics for the warpbreaks data?  We found the statistics on slides 18 and 19.  Slide 20 is where I state the distribution of the statistics for the tennis ball data.
 
-4. Take a look back at slide 25.  Is the p-value testing whether method had an effect larger or smaller than the one you obtained in Project 2?  Based on this answer, is there more or less evidence against the null hypothesis that there is no difference in true mean diameter measurements between the methods?  Why does the strength of evidence change? (This last part will require some critical thinking)
+4. Take a look back at slide 25.  Is the p-value testing whether method had an effect larger or smaller than the one you obtained in Project 2?  What did we do that caused this change.  I'm looking for you to explain why the Two-Way ANOVA gave us different results than the One-Way ANOVA.
 
 5. Do you have any comments or suggestions regrading this activity?
 
