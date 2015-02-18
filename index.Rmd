@@ -8,12 +8,12 @@ hitheme     : tomorrow      #
 widgets     : [bootstrap, quiz, mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
-```{r setup, echo=FALSE, message=FALSE}
+```{r setup, echo=FALSE, message=FALSE, cache=FALSE}
 require(knitr)
 require(ggplot2)
 options(show.signif.stars = FALSE)
 opts_chunk$set(tidy = FALSE, message=FALSE, comment = "", echo = TRUE, 
-               fig.align = 'center', fig.height = 5)
+               fig.align = 'center', fig.height = 5, cache = F)
 tennis <- read.csv("tennis.csv", header = T)
 set.seed(2014)
 ```
@@ -22,7 +22,7 @@ set.seed(2014)
 
 Recall that in class six groups collected information on tennis ball diameter using three different methods.  The data are summarized below.  We'll use a significance level of 0.05 for all tests on these data.
 
-```{r tennis_summ, comment = ""}
+```{r tennis_summ, comment = "", cache=FALSE}
 summary(tennis)
 ```
 
@@ -30,7 +30,7 @@ summary(tennis)
 ---
 ## Warpbreaks Data
 
-For some reason, people were interested in the number of warp breaks per loom (I have no idea what a warp break is; that's the fun of being a statistician).  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.
+Weaverswere interested in the number of warp breaks per loom.  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.
 
 ```{r warp_tally, comment = ""}
 require(mosaic)
@@ -102,7 +102,7 @@ At low tension, wool A has a lot more breaks than wool B.  At medium tension, ho
 --- 
 ## Interaction Model for Tennis Ball Data
 
-We'll start by fitting a model with ans interaction and testing to see if the interaction is needed.  The interaction model is:
+We'll start by fitting a model with an interaction and testing to see if the interaction is needed.  The interaction model is:
 
 $y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk}$
 
@@ -347,6 +347,7 @@ anova(tennis1)
 ```
 
 ```{r tennis_anova1_print, comment="", echo=FALSE, results='asis'}
+tennis1 <- lm(diameter ~ method + Group + method*Group, data = tennis)
 df1 <- data.frame(anova(tennis1))
 df1[, 2] <- round(df1[, 2], 3)
 df1[, 3] <- round(df1[, 3], 3)

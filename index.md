@@ -10,7 +10,6 @@ mode        : selfcontained # {standalone, draft}
 ---
 
 
-
 ## Tennis Ball Data
 
 Recall that in class six groups collected information on tennis ball diameter using three different methods.  The data are summarized below.  We'll use a significance level of 0.05 for all tests on these data.
@@ -21,36 +20,33 @@ summary(tennis)
 ```
 
 ```
-              Group        method      diameter   
- Back row bandits:15   Pencil :27   Min.   :6.25  
- Cool Group Name :15   String :27   1st Qu.:6.53  
- Group 1         :12   Zip.Tie:27   Median :6.80  
- Group Kickass   :18                Mean   :6.79  
- No Name         : 9                3rd Qu.:7.00  
- Team Cobra      :12                Max.   :7.90  
+              Group        method      diameter    
+ Back row bandits:15   Pencil :27   Min.   :6.250  
+ Cool Group Name :15   String :27   1st Qu.:6.530  
+ Group 1         :12   Zip.Tie:27   Median :6.800  
+ Group Kickass   :18                Mean   :6.786  
+ No Name         : 9                3rd Qu.:7.000  
+ Team Cobra      :12                Max.   :7.900  
 ```
-
 
 
 ---
 ## Warpbreaks Data
 
-For some reason, people were interested in the number of warp breaks per loom (I have no idea what a warp break is; that's the fun of being a statistician).  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.
+Weaverswere interested in the number of warp breaks per loom.  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.
 
 
 ```r
 require(mosaic)
-tally(~wool + tension, data = warpbreaks)
+tally(~ wool + tension, data = warpbreaks)
 ```
 
 ```
-       tension
-wool     L  M  H Total
-  A      9  9  9    27
-  B      9  9  9    27
-  Total 18 18 18    54
+    tension
+wool L M H
+   A 9 9 9
+   B 9 9 9
 ```
-
 
 --- &radio
 ## Information about the Warpbreaks Data
@@ -72,8 +68,7 @@ Each wool-tension group consists of 9 looms so the data are balanced.
 
 Separate boxes are given for each method-group combination.  The measurements for Cool Group Name have by far the most variability.  It appears that the pencil and string measurements have slightly larger diameters than the zip-tie measurements
 
-<img src="assets/fig/tennis_box.png" title="plot of chunk tennis_box" alt="plot of chunk tennis_box" style="display: block; margin: auto;" />
-
+<img src="assets/fig/tennis_box-1.png" title="plot of chunk tennis_box" alt="plot of chunk tennis_box" style="display: block; margin: auto;" />
 
 ---
 ## Interaction Plots of the Tennis Ball Data
@@ -85,8 +80,7 @@ An interaction plot of the tennis ball data is below.  This plot is pretty messy
 with(tennis, interaction.plot(Group, method, diameter))
 ```
 
-<img src="assets/fig/tennis_int.png" title="plot of chunk tennis_int" alt="plot of chunk tennis_int" style="display: block; margin: auto;" />
-
+<img src="assets/fig/tennis_int-1.png" title="plot of chunk tennis_int" alt="plot of chunk tennis_int" style="display: block; margin: auto;" />
 
 ---
 ## Interaction Plot of the Warpbreaks Data
@@ -98,8 +92,7 @@ The interaction plot for the warpbreaks data are provided below.  The different 
 with(warpbreaks, interaction.plot(tension, wool, breaks))
 ```
 
-<img src="assets/fig/warp_int.png" title="plot of chunk warp_int" alt="plot of chunk warp_int" style="display: block; margin: auto;" />
-
+<img src="assets/fig/warp_int-1.png" title="plot of chunk warp_int" alt="plot of chunk warp_int" style="display: block; margin: auto;" />
 
 --- &radio
 
@@ -121,7 +114,7 @@ At low tension, wool A has a lot more breaks than wool B.  At medium tension, ho
 --- 
 ## Interaction Model for Tennis Ball Data
 
-We'll start by fitting a model with ans interaction and testing to see if the interaction is needed.  The interaction model is:
+We'll start by fitting a model with an interaction and testing to see if the interaction is needed.  The interaction model is:
 
 $y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk}$
 
@@ -362,18 +355,17 @@ The F-statistic is 1.25.  This test statistic follows an F distribution with 10 
 
 
 ```r
-tennis1 <- lm(diameter ~ method + Group + method * Group, data = tennis)
+tennis1 <- lm(diameter ~ method + Group + method*Group, data = tennis)
 anova(tennis1)
 ```
 
 
-|id            |  Df|  Sum Sq|  Mean Sq|F value  |Pr(>F)  |
-|:-------------|---:|-------:|--------:|:--------|:-------|
-|method        |   2|   0.837|    0.418|6.882    |0.002   |
-|Group         |   5|   1.700|    0.340|5.594    |3e-04   |
-|method:Group  |  10|   0.758|    0.076|1.247    |0.2798  |
-|Residuals     |  63|   3.830|    0.061|         |        |
-
+|             | Df| Sum Sq| Mean Sq|F value |Pr(>F) |
+|:------------|--:|------:|-------:|:-------|:------|
+|method       |  2|  0.837|   0.418|6.882   |0.002  |
+|Group        |  5|  1.700|   0.340|5.594   |3e-04  |
+|method:Group | 10|  0.758|   0.076|1.247   |0.2798 |
+|Residuals    | 63|  3.830|   0.061|        |       |
 
 --- 
 ## Completed ANOVA Table for Warpbreaks Data
@@ -382,7 +374,7 @@ Here is the completed ANOVA table for the Warpbreaks data.
 
 
 ```r
-warp.lm <- lm(breaks ~ tension + wool + tension * wool, data = warpbreaks)
+warp.lm <- lm(breaks ~ tension + wool + tension*wool, data = warpbreaks)
 anova(warp.lm)
 ```
 
@@ -390,13 +382,12 @@ anova(warp.lm)
 Analysis of Variance Table
 
 Response: breaks
-             Df Sum Sq Mean Sq F value  Pr(>F)
-tension       2   2034    1017    8.50 0.00069
-wool          1    451     451    3.77 0.05821
-tension:wool  2   1003     501    4.19 0.02104
-Residuals    48   5745     120                
+             Df Sum Sq Mean Sq F value    Pr(>F)
+tension       2 2034.3 1017.13  8.4980 0.0006926
+wool          1  450.7  450.67  3.7653 0.0582130
+tension:wool  2 1002.8  501.39  4.1891 0.0210442
+Residuals    48 5745.1  119.69                  
 ```
-
 
 --- &radio
 ## Beginning to Test Warpbreaks Data
@@ -436,7 +427,7 @@ Since we did not find any evidence of an interaction, the next step is to fit an
 
 
 ```r
-require(car)  # for Type II sums of squares
+require(car) # for Type II sums of squares
 tennis2 <- lm(diameter ~ method + Group, data = tennis)
 Anova(tennis2)
 ```
@@ -445,12 +436,11 @@ Anova(tennis2)
 Anova Table (Type II tests)
 
 Response: diameter
-          Sum Sq Df F value  Pr(>F)
-method      0.84  2    6.66 0.00221
-Group       1.70  5    5.41 0.00027
-Residuals   4.59 73                
+          Sum Sq Df F value    Pr(>F)
+method    0.8367  2  6.6569 0.0022099
+Group     1.7002  5  5.4107 0.0002744
+Residuals 4.5877 73                  
 ```
-
 
 --- &radio
 ## Hypotheses for Additive Model
@@ -477,12 +467,11 @@ To check equal variance, we look at residual vs fitted value and scale-location 
 
 
 ```r
-par(mfrow = c(1, 2))
-plot(tennis2, which = c(1, 3))
+par(mfrow=c(1,2))
+plot(tennis2, which = c(1,3))
 ```
 
-<img src="assets/fig/tennis_equ.png" title="plot of chunk tennis_equ" alt="plot of chunk tennis_equ" style="display: block; margin: auto;" />
-
+<img src="assets/fig/tennis_equ-1.png" title="plot of chunk tennis_equ" alt="plot of chunk tennis_equ" style="display: block; margin: auto;" />
 
 ---
 ## Checking Equal Variance for the Warpbreaks Data
@@ -491,12 +480,11 @@ Here are the Residuals vs Fitted values and Scale-Location plots for the warpbre
 
 
 ```r
-par(mfrow = c(1, 2))
-plot(warp.lm, which = c(1, 3))
+par(mfrow=c(1,2))
+plot(warp.lm, which = c(1,3))
 ```
 
-<img src="assets/fig/warp_equ.png" title="plot of chunk warp_equ" alt="plot of chunk warp_equ" style="display: block; margin: auto;" />
-
+<img src="assets/fig/warp_equ-1.png" title="plot of chunk warp_equ" alt="plot of chunk warp_equ" style="display: block; margin: auto;" />
 
 --- &radio
 ## Comparing Equal Variance for the Two Data sets
@@ -521,14 +509,13 @@ We can use Normal Q-Q plots and a histogram to assess normality once again.  Exc
 
 
 ```r
-par(mfrow = c(1, 2))
+par(mfrow = c(1,2))
 plot(tennis2, which = 2)
 eij <- resid(tennis2)
 hist(eij, main = "Histogram of Residuals")
 ```
 
-<img src="assets/fig/tennis_norm.png" title="plot of chunk tennis_norm" alt="plot of chunk tennis_norm" style="display: block; margin: auto;" />
-
+<img src="assets/fig/tennis_norm-1.png" title="plot of chunk tennis_norm" alt="plot of chunk tennis_norm" style="display: block; margin: auto;" />
 
 ---
 ## Checking the Normality Assumption for the Warpbreaks Data
@@ -537,14 +524,13 @@ Here are the Residuals vs Fitted values and Scale-Location plots for the warpbre
 
 
 ```r
-par(mfrow = c(1, 2))
+par(mfrow=c(1,2))
 plot(warp.lm, which = c(2))
 eij <- resid(warp.lm)
 hist(eij, main = "Histogram of Residuals")
 ```
 
-<img src="assets/fig/warp_nrom.png" title="plot of chunk warp_nrom" alt="plot of chunk warp_nrom" style="display: block; margin: auto;" />
-
+<img src="assets/fig/warp_nrom-1.png" title="plot of chunk warp_nrom" alt="plot of chunk warp_nrom" style="display: block; margin: auto;" />
 
 --- &radio
 ## Comparing Normality for the Two data Sets

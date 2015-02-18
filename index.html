@@ -53,13 +53,13 @@
 <pre><code class="r">summary(tennis)
 </code></pre>
 
-<pre><code>              Group        method      diameter   
- Back row bandits:15   Pencil :27   Min.   :6.25  
- Cool Group Name :15   String :27   1st Qu.:6.53  
- Group 1         :12   Zip.Tie:27   Median :6.80  
- Group Kickass   :18                Mean   :6.79  
- No Name         : 9                3rd Qu.:7.00  
- Team Cobra      :12                Max.   :7.90  
+<pre><code>              Group        method      diameter    
+ Back row bandits:15   Pencil :27   Min.   :6.250  
+ Cool Group Name :15   String :27   1st Qu.:6.530  
+ Group 1         :12   Zip.Tie:27   Median :6.800  
+ Group Kickass   :18                Mean   :6.786  
+ No Name         : 9                3rd Qu.:7.000  
+ Team Cobra      :12                Max.   :7.900  
 </code></pre>
 
   </article>
@@ -71,17 +71,16 @@
     <h2>Warpbreaks Data</h2>
   </hgroup>
   <article data-timings="">
-    <p>For some reason, people were interested in the number of warp breaks per loom (I have no idea what a warp break is; that&#39;s the fun of being a statistician).  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.</p>
+    <p>Weaverswere interested in the number of warp breaks per loom.  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.</p>
 
 <pre><code class="r">require(mosaic)
-tally(~wool + tension, data = warpbreaks)
+tally(~ wool + tension, data = warpbreaks)
 </code></pre>
 
-<pre><code>       tension
-wool     L  M  H Total
-  A      9  9  9    27
-  B      9  9  9    27
-  Total 18 18 18    54
+<pre><code>    tension
+wool L M H
+   A 9 9 9
+   B 9 9 9
 </code></pre>
 
   </article>
@@ -128,7 +127,7 @@ wool     L  M  H Total
   <article data-timings="">
     <p>Separate boxes are given for each method-group combination.  The measurements for Cool Group Name have by far the most variability.  It appears that the pencil and string measurements have slightly larger diameters than the zip-tie measurements</p>
 
-<p><img src="assets/fig/tennis_box.png" title="plot of chunk tennis_box" alt="plot of chunk tennis_box" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/tennis_box-1.png" title="plot of chunk tennis_box" alt="plot of chunk tennis_box" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -144,7 +143,7 @@ wool     L  M  H Total
 <pre><code class="r">with(tennis, interaction.plot(Group, method, diameter))
 </code></pre>
 
-<p><img src="assets/fig/tennis_int.png" title="plot of chunk tennis_int" alt="plot of chunk tennis_int" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/tennis_int-1.png" title="plot of chunk tennis_int" alt="plot of chunk tennis_int" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -160,7 +159,7 @@ wool     L  M  H Total
 <pre><code class="r">with(warpbreaks, interaction.plot(tension, wool, breaks))
 </code></pre>
 
-<p><img src="assets/fig/warp_int.png" title="plot of chunk warp_int" alt="plot of chunk warp_int" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/warp_int-1.png" title="plot of chunk warp_int" alt="plot of chunk warp_int" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -205,7 +204,7 @@ wool     L  M  H Total
     <h2>Interaction Model for Tennis Ball Data</h2>
   </hgroup>
   <article data-timings="">
-    <p>We&#39;ll start by fitting a model with ans interaction and testing to see if the interaction is needed.  The interaction model is:</p>
+    <p>We&#39;ll start by fitting a model with an interaction and testing to see if the interaction is needed.  The interaction model is:</p>
 
 <p>\(y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk}\)</p>
 
@@ -873,13 +872,13 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 <p>The F-statistic is 1.25.  This test statistic follows an F distribution with 10 numerator and 63 denominator degrees of freedom.  This yields a p-value of 0.28. We therefore fail to reject the null and conclude that the differences in diameter measurements do not vary across the groups (i.e. we conclude that there is not an interaction effect in the data).</p>
 
-<pre><code class="r">tennis1 &lt;- lm(diameter ~ method + Group + method * Group, data = tennis)
+<pre><code class="r">tennis1 &lt;- lm(diameter ~ method + Group + method*Group, data = tennis)
 anova(tennis1)
 </code></pre>
 
 <table><thead>
 <tr>
-<th align="left">id</th>
+<th align="left"></th>
 <th align="right">Df</th>
 <th align="right">Sum Sq</th>
 <th align="right">Mean Sq</th>
@@ -932,18 +931,18 @@ anova(tennis1)
   <article data-timings="">
     <p>Here is the completed ANOVA table for the Warpbreaks data. </p>
 
-<pre><code class="r">warp.lm &lt;- lm(breaks ~ tension + wool + tension * wool, data = warpbreaks)
+<pre><code class="r">warp.lm &lt;- lm(breaks ~ tension + wool + tension*wool, data = warpbreaks)
 anova(warp.lm)
 </code></pre>
 
 <pre><code>Analysis of Variance Table
 
 Response: breaks
-             Df Sum Sq Mean Sq F value  Pr(&gt;F)
-tension       2   2034    1017    8.50 0.00069
-wool          1    451     451    3.77 0.05821
-tension:wool  2   1003     501    4.19 0.02104
-Residuals    48   5745     120                
+             Df Sum Sq Mean Sq F value    Pr(&gt;F)
+tension       2 2034.3 1017.13  8.4980 0.0006926
+wool          1  450.7  450.67  3.7653 0.0582130
+tension:wool  2 1002.8  501.39  4.1891 0.0210442
+Residuals    48 5745.1  119.69                  
 </code></pre>
 
   </article>
@@ -1025,7 +1024,7 @@ Residuals    48   5745     120
   <article data-timings="">
     <p>Since we did not find any evidence of an interaction, the next step is to fit an additive model.  In this model, we say that \(y_{ijk} = \alpha + \tau_j + \gamma_k + \epsilon_{ijk}\).  The ANOVA table for this model is displayed below.  This table uses Type II Sums of Squares so we can test both factors simultaneously.</p>
 
-<pre><code class="r">require(car)  # for Type II sums of squares
+<pre><code class="r">require(car) # for Type II sums of squares
 tennis2 &lt;- lm(diameter ~ method + Group, data = tennis)
 Anova(tennis2)
 </code></pre>
@@ -1033,10 +1032,10 @@ Anova(tennis2)
 <pre><code>Anova Table (Type II tests)
 
 Response: diameter
-          Sum Sq Df F value  Pr(&gt;F)
-method      0.84  2    6.66 0.00221
-Group       1.70  5    5.41 0.00027
-Residuals   4.59 73                
+          Sum Sq Df F value    Pr(&gt;F)
+method    0.8367  2  6.6569 0.0022099
+Group     1.7002  5  5.4107 0.0002744
+Residuals 4.5877 73                  
 </code></pre>
 
   </article>
@@ -1086,11 +1085,11 @@ Residuals   4.59 73
   <article data-timings="">
     <p>To check equal variance, we look at residual vs fitted value and scale-location plots as before.  Once again, we are looking for any sort of pattern.  You could claim there&#39;s evidence of a fan shape in the residuals vs fitted values plot, but that&#39;s mostly driven by point 70 which is an outlier (we&#39;ll learn how to deal with them later).  Otherwise, the assumption appears to be okay.  These plots are strange so ask me if you are confused.</p>
 
-<pre><code class="r">par(mfrow = c(1, 2))
-plot(tennis2, which = c(1, 3))
+<pre><code class="r">par(mfrow=c(1,2))
+plot(tennis2, which = c(1,3))
 </code></pre>
 
-<p><img src="assets/fig/tennis_equ.png" title="plot of chunk tennis_equ" alt="plot of chunk tennis_equ" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/tennis_equ-1.png" title="plot of chunk tennis_equ" alt="plot of chunk tennis_equ" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1103,11 +1102,11 @@ plot(tennis2, which = c(1, 3))
   <article data-timings="">
     <p>Here are the Residuals vs Fitted values and Scale-Location plots for the warpbreaks data.</p>
 
-<pre><code class="r">par(mfrow = c(1, 2))
-plot(warp.lm, which = c(1, 3))
+<pre><code class="r">par(mfrow=c(1,2))
+plot(warp.lm, which = c(1,3))
 </code></pre>
 
-<p><img src="assets/fig/warp_equ.png" title="plot of chunk warp_equ" alt="plot of chunk warp_equ" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/warp_equ-1.png" title="plot of chunk warp_equ" alt="plot of chunk warp_equ" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1154,13 +1153,13 @@ plot(warp.lm, which = c(1, 3))
   <article data-timings="">
     <p>We can use Normal Q-Q plots and a histogram to assess normality once again.  Except for observations 70 and 71, the points fall really close to the dashed lines.  This suggests that these points are potential outliers.  The histogram looks unimodal and reasonably symmetric.  So these plots suggest that the normality assumption is met.</p>
 
-<pre><code class="r">par(mfrow = c(1, 2))
+<pre><code class="r">par(mfrow = c(1,2))
 plot(tennis2, which = 2)
 eij &lt;- resid(tennis2)
 hist(eij, main = &quot;Histogram of Residuals&quot;)
 </code></pre>
 
-<p><img src="assets/fig/tennis_norm.png" title="plot of chunk tennis_norm" alt="plot of chunk tennis_norm" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/tennis_norm-1.png" title="plot of chunk tennis_norm" alt="plot of chunk tennis_norm" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1173,13 +1172,13 @@ hist(eij, main = &quot;Histogram of Residuals&quot;)
   <article data-timings="">
     <p>Here are the Residuals vs Fitted values and Scale-Location plots for the warpbreaks data.</p>
 
-<pre><code class="r">par(mfrow = c(1, 2))
+<pre><code class="r">par(mfrow=c(1,2))
 plot(warp.lm, which = c(2))
 eij &lt;- resid(warp.lm)
 hist(eij, main = &quot;Histogram of Residuals&quot;)
 </code></pre>
 
-<p><img src="assets/fig/warp_nrom.png" title="plot of chunk warp_nrom" alt="plot of chunk warp_nrom" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/warp_nrom-1.png" title="plot of chunk warp_nrom" alt="plot of chunk warp_nrom" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
