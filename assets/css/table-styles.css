@@ -3,8 +3,6 @@ table {
   width: 75%;
   max-width: 100%;
   border: 1px solid black;
-  overflow-y: hidden;
-  overflow-x: hidden;
 }
 
 caption {
