@@ -303,9 +303,9 @@ Here is the current ANOVA table for Warpbreaks data.  Next we'll fill in the F-s
 
 |id            |  Df|     Sum Sq|    Mean Sq|   F value|     Pr(>F)|
 |:-------------|---:|----------:|----------:|---------:|----------:|
-|tension       | 2  | 2034.3 |  1017.15|  |  |
-|wool          |1   |  450.7 |  450.7 |  |  |
-|tension:wool  |2   | 1002.78 | 501.39  |  |  |
+|tension       | 2  | 2034.3 |  1017.15| $F_A$ |  |
+|wool          |1   |  450.7 |  450.7 | $F_B$ |  |
+|tension:wool  |2   | 1002.78 | 501.39  | $F_{AB}$ |  |
 |Residuals     |48  | 5745.12 | 119.69  |      |         |
 |Total |53 |9232.9 | | |
 
