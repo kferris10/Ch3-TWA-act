@@ -1,54 +1,68 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <title>Two-Way ANOVA</title>
   <meta charset="utf-8">
-  <meta name="description" content="Two-Way ANOVA">
-  <meta name="author" content="Stat 217">
-  <meta name="generator" content="slidify" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
-    media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Two-Way ANOVA</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <link  rel="stylesheet" 
+    href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css">
+  <link rel="stylesheet" href="libraries/frameworks/bootstrap3/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="libraries/frameworks/bootstrap3/css/main.css">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/github.css" />
+  <script src="libraries/frameworks/bootstrap3/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/frameworks/bootstrap3/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+    <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
 <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="./assets/css/custom.css"></link>
+<link rel=stylesheet href="./assets/css/moving_sidebar.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/table-styles.css"></link>
+<link rel=stylesheet href="http://fonts.googleapis.com/css?family=Vollkorn"></link>
+<link rel=stylesheet href="http://fonts.googleapis.com/css?family=Droid%20Sans%20Mono"></link>
 
+  <script src="libraries/frameworks/bootstrap3/js/jquery.js"></script>
   
-  <!-- Grab CDN jQuery, fall back to local if offline -->
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="libraries/frameworks/io2012/js/slides" 
-    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
-  </script>
-  
-  
-
 </head>
-<body style="opacity: 0">
-  <slides class="layout-widescreen">
-    
-    <!-- LOGO SLIDE -->
-        <slide class="title-slide segue nobackground">
-  <hgroup class="auto-fadein">
-    <h1>Two-Way ANOVA</h1>
-    <h2>Chapter 3</h2>
-    <p>Stat 217<br/></p>
-  </hgroup>
-  <article></article>  
-</slide>
-    
+<body data-spy = "scroll" data-target = ".page-sidebar">
+   <!--[if lt IE 7]>
+     <p class="chromeframe">You are using an outdated browser. 
+       <a href="http://browsehappy.com/">Upgrade your browser today</a> or 
+       <a href="http://www.google.com/chromeframe/?redirect=true"> 
+         install Google Chrome Frame
+       </a> to better experience this site.
+    </p>
+   <![endif]-->
 
-    <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:;">
-  <hgroup>
-    <h2>Tennis Ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Recall that in class six groups collected information on tennis ball diameter using three different methods.  The data are summarized below.  We&#39;ll use a significance level of 0.05 for all tests on these data.</p>
+  <div class="container-fluid">
+
+    <div class = "row">
+
+      <div class = "col-md-9 col-sm-12">
+
+        <div class="jumbotron">
+          <div class="container-fluid">
+            <h1>Two-Way ANOVA</h1>
+            <h3>Chapter 3</h3>
+            <h3>Stat 217</h3>
+            <h3>Monday, February 23, 2015</h3>
+          </div>
+        </div>
+
+        <div class="section" id="slide-1">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Tennis Ball Data</h2>
+    <hr>
+    </div>
+  <p>Last semester in Stat 217 six groups collected information on tennis ball diameter using three different methods.  Each group measured the diameter using two pencils, a string, and a zip tie.  The data are summarized below.  We&#39;ll use a significance level of 0.05 for all tests on these data.</p>
 
 <pre><code class="r">summary(tennis)
 </code></pre>
@@ -62,16 +76,15 @@
  Team Cobra      :12                Max.   :7.900  
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-2" style="background:;">
-  <hgroup>
-    <h2>Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Weaverswere interested in the number of warp breaks per loom.  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.</p>
+  </div>
+</div>
+<div class="section" id="slide-2">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Warpbreaks Data</h2>
+    <hr>
+    </div>
+  <p>Weavers were interested in the number of warp breaks per loom.  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.</p>
 
 <pre><code class="r">require(mosaic)
 tally(~ wool + tension, data = warpbreaks)
@@ -83,16 +96,15 @@ wool L M H
    B 9 9 9
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-3" style="background:;">
-  <hgroup>
-    <h2>Information about the Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-3">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Information about the Warpbreaks Data</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>Are the warp breaks data balanced?</p>
 
@@ -116,61 +128,57 @@ wool L M H
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-4" style="background:;">
-  <hgroup>
-    <h2>Boxplots of the Tennis Ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Separate boxes are given for each method-group combination.  The measurements for Cool Group Name have by far the most variability.  It appears that the pencil and string measurements have slightly larger diameters than the zip-tie measurements</p>
+  </div>
+</div>
+<div class="section" id="slide-4">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Boxplots of the Tennis Ball Data</h2>
+    <hr>
+    </div>
+  <p>Separate boxes are given for each method-group combination.  The measurements for Cool Group Name have by far the most variability.  It appears that the pencil and string measurements have slightly larger diameters than the zip-tie measurements</p>
 
 <p><img src="assets/fig/tennis_box-1.png" title="plot of chunk tennis_box" alt="plot of chunk tennis_box" style="display: block; margin: auto;" /></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>Interaction Plots of the Tennis Ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>An interaction plot of the tennis ball data is below.  This plot is pretty messy.  The lines are not parallel all the way across and they do cross at several places which is suggestive of an interaction.  The lines do follow the same general trend though.  Overall, I would say this plot does not provide strong evidence one way or another of an interaction.  We&#39;ll have to do an F test to be sure.</p>
+  </div>
+</div>
+<div class="section" id="slide-5">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Interaction Plots of the Tennis Ball Data</h2>
+    <hr>
+    </div>
+  <p>An interaction plot of the tennis ball data is below.  This plot is pretty messy.  The lines are not parallel all the way across and they do cross at several places which is suggestive of an interaction.  The lines do follow the same general trend though.  Overall, I would say this plot does not provide strong evidence one way or another of an interaction.  We&#39;ll have to do an F test to be sure.</p>
 
 <pre><code class="r">with(tennis, interaction.plot(Group, method, diameter))
 </code></pre>
 
 <p><img src="assets/fig/tennis_int-1.png" title="plot of chunk tennis_int" alt="plot of chunk tennis_int" style="display: block; margin: auto;" /></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-6" style="background:;">
-  <hgroup>
-    <h2>Interaction Plot of the Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>The interaction plot for the warpbreaks data are provided below.  The different lines correspond to different wool types.</p>
+  </div>
+</div>
+<div class="section" id="slide-6">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Interaction Plot of the Warpbreaks Data</h2>
+    <hr>
+    </div>
+  <p>The interaction plot for the warpbreaks data are provided below.  The different lines correspond to different wool types.</p>
 
 <pre><code class="r">with(warpbreaks, interaction.plot(tension, wool, breaks))
 </code></pre>
 
 <p><img src="assets/fig/warp_int-1.png" title="plot of chunk warp_int" alt="plot of chunk warp_int" style="display: block; margin: auto;" /></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-7" style="background:;">
-  <hgroup>
-    <h2>Interaction for Warpbreaks Data?</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-7">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Interaction for Warpbreaks Data?</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>Does the interaction plot suggest that the effect of tension depends on the type of wool?  You might want to take a look at the explanation even if you get the question right.  I think it&#39;s useful.</p>
 
@@ -195,16 +203,15 @@ wool L M H
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-8" style="background:;">
-  <hgroup>
-    <h2>Interaction Model for Tennis Ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>We&#39;ll start by fitting a model with an interaction and testing to see if the interaction is needed.  The interaction model is:</p>
+  </div>
+</div>
+<div class="section" id="slide-8">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Interaction Model for Tennis Ball Data</h2>
+    <hr>
+    </div>
+  <p>We&#39;ll start by fitting a model with an interaction and testing to see if the interaction is needed.  The interaction model is:</p>
 
 <p>\(y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk}\)</p>
 
@@ -212,16 +219,15 @@ wool L M H
 
 <p>To test for an interaction, we will test to see if the \(\omega_{jk}\)&#39;s are all zero.</p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-9" style="background:;">
-  <hgroup>
-    <h2>Interaction Model for Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-9">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Interaction Model for Warpbreaks Data</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>We&#39;ll also start with an interaction model for the warpbreaks data:</p>
 
@@ -254,16 +260,15 @@ wool L M H
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-10" style="background:;">
-  <hgroup>
-    <h2>ANOVA Table for Tennis Ball Data Part 1</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Here&#39;s a sparse ANOVA table for the tennis ball data that has not been filled in.  </p>
+  </div>
+</div>
+<div class="section" id="slide-10">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>ANOVA Table for Tennis Ball Data Part 1</h2>
+    <hr>
+    </div>
+  <p>Here&#39;s a sparse ANOVA table for the tennis ball data that has not been filled in.  </p>
 
 <table><thead>
 <tr>
@@ -327,16 +332,15 @@ wool L M H
 
 <p>\(df_{Total} = N-1 = 81 - 1\)</p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-11" style="background:;">
-  <hgroup>
-    <h2>ANOVA Table for the Warpbreaks Data Part 1</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Here&#39;s a blank ANOVA Table for a model with an interaction for the warpbreaks data.  We&#39;ll let tension be factor A and wool be factor B</p>
+  </div>
+</div>
+<div class="section" id="slide-11">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>ANOVA Table for the Warpbreaks Data Part 1</h2>
+    <hr>
+    </div>
+  <p>Here&#39;s a blank ANOVA Table for a model with an interaction for the warpbreaks data.  We&#39;ll let tension be factor A and wool be factor B</p>
 
 <table><thead>
 <tr>
@@ -390,16 +394,15 @@ wool L M H
 </tr>
 </tbody></table>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-12" style="background:;">
-  <hgroup>
-    <h2>Degrees of Freedom for Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-12">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Degrees of Freedom for Warpbreaks Data</h2>
+    <hr>
+    </div>
+  
 <div class="quiz-text quiz-multitext well">
   <ol>
 <li>What is \(df_A\)?</li>
@@ -434,16 +437,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-13" style="background:;">
-  <hgroup>
-    <h2>ANOVA Table for Tennis Ball Data Part 2</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Here&#39;s the updated ANOVA table with a few numbers added to it.  We can fill in the rest of the SS and MS values.</p>
+  </div>
+</div>
+<div class="section" id="slide-13">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>ANOVA Table for Tennis Ball Data Part 2</h2>
+    <hr>
+    </div>
+  <p>Here&#39;s the updated ANOVA table with a few numbers added to it.  We can fill in the rest of the SS and MS values.</p>
 
 <table><thead>
 <tr>
@@ -507,16 +509,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 <p>\(MS_E = SS_E / df_E = 3.83 / 63 = 0.061\)</p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-14" style="background:;">
-  <hgroup>
-    <h2>ANOVA Table for Warpbreaks Data Part 2</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>A few numbers have been added to the warpbreaks ANOVA table as well.  We&#39;ll try and fill in the rest of the table.</p>
+  </div>
+</div>
+<div class="section" id="slide-14">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>ANOVA Table for Warpbreaks Data Part 2</h2>
+    <hr>
+    </div>
+  <p>A few numbers have been added to the warpbreaks ANOVA table as well.  We&#39;ll try and fill in the rest of the table.</p>
 
 <table><thead>
 <tr>
@@ -570,16 +571,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 </tr>
 </tbody></table>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-15" style="background:;">
-  <hgroup>
-    <h2>SS and MS for Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-15">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>SS and MS for Warpbreaks Data</h2>
+    <hr>
+    </div>
+  
 <div class="quiz-text quiz-multitext well">
   <p>Fill in the following values.  Round all answers to 2 decimal places.</p>
 
@@ -616,16 +616,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-16" style="background:;">
-  <hgroup>
-    <h2>ANOVA Table for Tennis Ball Data Part 3</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>The F-statistics for each of the three rows are just the \(MS\) for that row divided by the \(MS_E\).</p>
+  </div>
+</div>
+<div class="section" id="slide-16">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>ANOVA Table for Tennis Ball Data Part 3</h2>
+    <hr>
+    </div>
+  <p>The F-statistics for each of the three rows are just the \(MS\) for that row divided by the \(MS_E\).</p>
 
 <table><thead>
 <tr>
@@ -685,16 +684,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 <p>\(F_{AB} = 0.076 / 0.061 = 1.25\)</p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-17" style="background:;">
-  <hgroup>
-    <h2>ANOVA Table for Warpbreaks Data Part 3</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Here is the current ANOVA table for Warpbreaks data.  Next we&#39;ll fill in the F-statistics</p>
+  </div>
+</div>
+<div class="section" id="slide-17">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>ANOVA Table for Warpbreaks Data Part 3</h2>
+    <hr>
+    </div>
+  <p>Here is the current ANOVA table for Warpbreaks data.  Next we&#39;ll fill in the F-statistics</p>
 
 <table><thead>
 <tr>
@@ -748,16 +746,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 </tr>
 </tbody></table>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-18" style="background:;">
-  <hgroup>
-    <h2>F-statistics for Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-18">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>F-statistics for Warpbreaks Data</h2>
+    <hr>
+    </div>
+  
 <div class="quiz-text quiz-multitext well">
   <p>Fill in the following.  Round to two decimal places.</p>
 
@@ -788,16 +785,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-19" style="background:;">
-  <hgroup>
-    <h2>ANOVA Table for Tennis Ball Data Part 4</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>The F-statistics still follow an F distribution.  The numerator degrees of freedom is the df on the same row as each statistic.  The denominator degrees of freedom is the Residual df (\(df_E\)).  We compare the observed F-values to these named distributions to find a p-value.</p>
+  </div>
+</div>
+<div class="section" id="slide-19">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>ANOVA Table for Tennis Ball Data Part 4</h2>
+    <hr>
+    </div>
+  <p>The F-statistics still follow an F distribution.  The numerator degrees of freedom is the df on the same row as each statistic.  The denominator degrees of freedom is the Residual df (\(df_E\)).  We compare the observed F-values to these named distributions to find a p-value.</p>
 
 <table><thead>
 <tr>
@@ -859,16 +855,15 @@ There are three levels of wool so \(DF_B = 2-1\)</p></li>
 
 <p>\(F_{AB} \sim F(10, 63)\)</p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-20" style="background:;">
-  <hgroup>
-    <h2>Testing for an Interaction in Tennis Ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>We start by first examining the method:group row.  This row tests to see if there is an interaction present between Group and method.</p>
+  </div>
+</div>
+<div class="section" id="slide-20">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Testing for an Interaction in Tennis Ball Data</h2>
+    <hr>
+    </div>
+  <p>We start by first examining the method:group row.  This row tests to see if there is an interaction present between Group and method.</p>
 
 <p>The F-statistic is 1.25.  This test statistic follows an F distribution with 10 numerator and 63 denominator degrees of freedom.  This yields a p-value of 0.28. We therefore fail to reject the null and conclude that the differences in diameter measurements do not vary across the groups (i.e. we conclude that there is not an interaction effect in the data).</p>
 
@@ -920,16 +915,15 @@ anova(tennis1)
 </tr>
 </tbody></table>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-21" style="background:;">
-  <hgroup>
-    <h2>Completed ANOVA Table for Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Here is the completed ANOVA table for the Warpbreaks data. </p>
+  </div>
+</div>
+<div class="section" id="slide-21">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Completed ANOVA Table for Warpbreaks Data</h2>
+    <hr>
+    </div>
+  <p>Here is the completed ANOVA table for the Warpbreaks data. </p>
 
 <pre><code class="r">warp.lm &lt;- lm(breaks ~ tension + wool + tension*wool, data = warpbreaks)
 anova(warp.lm)
@@ -945,16 +939,15 @@ tension:wool  2 1002.8  501.39  4.1891 0.0210442
 Residuals    48 5745.1  119.69                  
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-22" style="background:;">
-  <hgroup>
-    <h2>Beginning to Test Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-22">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Beginning to Test Warpbreaks Data</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>Which null hypotheses is being tested by the <code>wool:tension</code> row of the ANOVA table?  Make sure that you know what the alternative hypothesis is.</p>
 
@@ -981,16 +974,15 @@ Residuals    48 5745.1  119.69
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-23" style="background:;">
-  <hgroup>
-    <h2>Testing for an Interaction in Warpbreaks data</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-23">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Testing for an Interaction in Warpbreaks data</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>Based on the ANOVA table, is there evidence of an interaction between wool and tension at the \(\alpha = 0.05\) significance level?</p>
 
@@ -1013,16 +1005,15 @@ Residuals    48 5745.1  119.69
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-24" style="background:;">
-  <hgroup>
-    <h2>Next step for Tennis Ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Since we did not find any evidence of an interaction, the next step is to fit an additive model.  In this model, we say that \(y_{ijk} = \alpha + \tau_j + \gamma_k + \epsilon_{ijk}\).  The ANOVA table for this model is displayed below.  This table uses Type II Sums of Squares so we can test both factors simultaneously.</p>
+  </div>
+</div>
+<div class="section" id="slide-24">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Next step for Tennis Ball Data</h2>
+    <hr>
+    </div>
+  <p>Since we did not find any evidence of an interaction, the next step is to fit an additive model.  In this model, we say that \(y_{ijk} = \alpha + \tau_j + \gamma_k + \epsilon_{ijk}\).  The ANOVA table for this model is displayed below.  This table uses Type II Sums of Squares so we can test both factors simultaneously.</p>
 
 <pre><code class="r">require(car) # for Type II sums of squares
 tennis2 &lt;- lm(diameter ~ method + Group, data = tennis)
@@ -1038,16 +1029,15 @@ Group     1.7002  5  5.4107 0.0002744
 Residuals 4.5877 73                  
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-25" style="background:;">
-  <hgroup>
-    <h2>Hypotheses for Additive Model</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-25">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Hypotheses for Additive Model</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>We&#39;ll use the additive model model where the \(\tau_j\)&#39;s are the method (string/ziptie/pencil) coefficients and the \(\gamma_k\)&#39;s are the coefficients for different groups.  The method row tests whether the \(\tau_j\)&#39;s are equal to zero (i.e. whether the different methods result in different diameters).</p>
 
@@ -1074,16 +1064,15 @@ Residuals 4.5877 73
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-26" style="background:;">
-  <hgroup>
-    <h2>Checking Equal Variance for Tennis Ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>To check equal variance, we look at residual vs fitted value and scale-location plots as before.  Once again, we are looking for any sort of pattern.  You could claim there&#39;s evidence of a fan shape in the residuals vs fitted values plot, but that&#39;s mostly driven by point 70 which is an outlier (we&#39;ll learn how to deal with them later).  Otherwise, the assumption appears to be okay.  These plots are strange so ask me if you are confused.</p>
+  </div>
+</div>
+<div class="section" id="slide-26">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Checking Equal Variance for Tennis Ball Data</h2>
+    <hr>
+    </div>
+  <p>To check equal variance, we look at residual vs fitted value and scale-location plots as before.  Once again, we are looking for any sort of pattern.  You could claim there&#39;s evidence of a fan shape in the residuals vs fitted values plot, but that&#39;s mostly driven by point 70 which is an outlier (we&#39;ll learn how to deal with them later).  Otherwise, the assumption appears to be okay.  These plots are strange so ask me if you are confused.</p>
 
 <pre><code class="r">par(mfrow=c(1,2))
 plot(tennis2, which = c(1,3))
@@ -1091,16 +1080,15 @@ plot(tennis2, which = c(1,3))
 
 <p><img src="assets/fig/tennis_equ-1.png" title="plot of chunk tennis_equ" alt="plot of chunk tennis_equ" style="display: block; margin: auto;" /></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-27" style="background:;">
-  <hgroup>
-    <h2>Checking Equal Variance for the Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Here are the Residuals vs Fitted values and Scale-Location plots for the warpbreaks data.</p>
+  </div>
+</div>
+<div class="section" id="slide-27">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Checking Equal Variance for the Warpbreaks Data</h2>
+    <hr>
+    </div>
+  <p>Here are the Residuals vs Fitted values and Scale-Location plots for the warpbreaks data.</p>
 
 <pre><code class="r">par(mfrow=c(1,2))
 plot(warp.lm, which = c(1,3))
@@ -1108,16 +1096,15 @@ plot(warp.lm, which = c(1,3))
 
 <p><img src="assets/fig/warp_equ-1.png" title="plot of chunk warp_equ" alt="plot of chunk warp_equ" style="display: block; margin: auto;" /></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-28" style="background:;">
-  <hgroup>
-    <h2>Comparing Equal Variance for the Two Data sets</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-28">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Comparing Equal Variance for the Two Data sets</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>For which data set does the equal variance assumption appear to be more problematic?</p>
 
@@ -1142,16 +1129,15 @@ plot(warp.lm, which = c(1,3))
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-29" style="background:;">
-  <hgroup>
-    <h2>Checking Normality for Tennis ball Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>We can use Normal Q-Q plots and a histogram to assess normality once again.  Except for observations 70 and 71, the points fall really close to the dashed lines.  This suggests that these points are potential outliers.  The histogram looks unimodal and reasonably symmetric.  So these plots suggest that the normality assumption is met.</p>
+  </div>
+</div>
+<div class="section" id="slide-29">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Checking Normality for Tennis ball Data</h2>
+    <hr>
+    </div>
+  <p>We can use Normal Q-Q plots and a histogram to assess normality once again.  Except for observations 70 and 71, the points fall really close to the dashed lines.  This suggests that these points are potential outliers.  The histogram looks unimodal and reasonably symmetric.  So these plots suggest that the normality assumption is met.</p>
 
 <pre><code class="r">par(mfrow = c(1,2))
 plot(tennis2, which = 2)
@@ -1161,16 +1147,15 @@ hist(eij, main = &quot;Histogram of Residuals&quot;)
 
 <p><img src="assets/fig/tennis_norm-1.png" title="plot of chunk tennis_norm" alt="plot of chunk tennis_norm" style="display: block; margin: auto;" /></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-30" style="background:;">
-  <hgroup>
-    <h2>Checking the Normality Assumption for the Warpbreaks Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Here are the Residuals vs Fitted values and Scale-Location plots for the warpbreaks data.</p>
+  </div>
+</div>
+<div class="section" id="slide-30">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Checking the Normality Assumption for the Warpbreaks Data</h2>
+    <hr>
+    </div>
+  <p>Here are the Residuals vs Fitted values and Scale-Location plots for the warpbreaks data.</p>
 
 <pre><code class="r">par(mfrow=c(1,2))
 plot(warp.lm, which = c(2))
@@ -1180,16 +1165,15 @@ hist(eij, main = &quot;Histogram of Residuals&quot;)
 
 <p><img src="assets/fig/warp_nrom-1.png" title="plot of chunk warp_nrom" alt="plot of chunk warp_nrom" style="display: block; margin: auto;" /></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-31" style="background:;">
-  <hgroup>
-    <h2>Comparing Normality for the Two data Sets</h2>
-  </hgroup>
-  <article data-timings="">
-    
+  </div>
+</div>
+<div class="section" id="slide-31">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Comparing Normality for the Two data Sets</h2>
+    <hr>
+    </div>
+  
 <div class="quiz quiz-single well ">
   <p>Which data set seems to have more of a problem with the normality assumption?</p>
 
@@ -1214,233 +1198,115 @@ hist(eij, main = &quot;Histogram of Residuals&quot;)
 
 </div>
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-32" style="background:;">
-  <hgroup>
-    <h2>Conclusion part 1</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Write down or email answers to these questions to your instructor.</p>
+  </div>
+</div>
+<div class="section" id="slide-32">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h2>Conclusion part 1</h2>
+    <hr>
+    </div>
+  <p>These questions are not required, but you should try to figure them out anyway.</p>
 
 <ol>
 <li><p>When looking at an interaction plot, what would suggest that an interaction is present?</p></li>
 <li><p>Even though we won&#39;t do multiple comparisons here, you can still look at the plots to attempt to answer the question of interest: does it appear that any wool-tension combinations resulted in fewer breaks?</p></li>
-<li><p>What are the distribution of the F-statistics for the warpbreaks data?  We found the statistics on slides 18 and 19.  Slide 20 is where I state the distribution of the statistics for the tennis ball data.</p></li>
-<li><p>Take a look back at slide 25.  Is the p-value testing whether method had an effect larger or smaller than the one you obtained in Project 2?  What did we do that caused this change.  I&#39;m looking for you to explain why the Two-Way ANOVA gave us different results than the One-Way ANOVA.</p></li>
-<li><p>Do you have any comments or suggestions regrading this activity?</p></li>
+<li><p>What are the distribution of the F-statistics for the warpbreaks data? <a href="#slide-19">ANOVA Table for Tennis Ball Data Part 4</a> is where I state the distribution for the Tennis Ball data.</p></li>
 </ol>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+  </div>
+</div>
 
-    <slide class="backdrop"></slide>
-  </slides>
-  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
-    <ul>
-      <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Tennis Ball Data'>
-         1
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Warpbreaks Data'>
-         2
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Information about the Warpbreaks Data'>
-         3
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Boxplots of the Tennis Ball Data'>
-         4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Interaction Plots of the Tennis Ball Data'>
-         5
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Interaction Plot of the Warpbreaks Data'>
-         6
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Interaction for Warpbreaks Data?'>
-         7
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Interaction Model for Tennis Ball Data'>
-         8
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Interaction Model for Warpbreaks Data'>
-         9
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='ANOVA Table for Tennis Ball Data Part 1'>
-         10
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='ANOVA Table for the Warpbreaks Data Part 1'>
-         11
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Degrees of Freedom for Warpbreaks Data'>
-         12
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='ANOVA Table for Tennis Ball Data Part 2'>
-         13
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='ANOVA Table for Warpbreaks Data Part 2'>
-         14
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='SS and MS for Warpbreaks Data'>
-         15
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='ANOVA Table for Tennis Ball Data Part 3'>
-         16
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='ANOVA Table for Warpbreaks Data Part 3'>
-         17
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='F-statistics for Warpbreaks Data'>
-         18
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='ANOVA Table for Tennis Ball Data Part 4'>
-         19
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Testing for an Interaction in Tennis Ball Data'>
-         20
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Completed ANOVA Table for Warpbreaks Data'>
-         21
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Beginning to Test Warpbreaks Data'>
-         22
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Testing for an Interaction in Warpbreaks data'>
-         23
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Next step for Tennis Ball Data'>
-         24
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Hypotheses for Additive Model'>
-         25
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Checking Equal Variance for Tennis Ball Data'>
-         26
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Checking Equal Variance for the Warpbreaks Data'>
-         27
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Comparing Equal Variance for the Two Data sets'>
-         28
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Checking Normality for Tennis ball Data'>
-         29
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Checking the Normality Assumption for the Warpbreaks Data'>
-         30
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Comparing Normality for the Two data Sets'>
-         31
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Conclusion part 1'>
-         32
-      </a>
-    </li>
-  </ul>
-  </div>  <!--[if IE]>
-    <script 
-      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
-    </script>
-    <script>CFInstall.check({mode: 'overlay'});</script>
-  <![endif]-->
+      </div>  <!-- end content -->
+
+      <div class = "col-md-3">
+        <div class = "container-fluid">
+          <div class = "page-sidebar hidden-print hidden-xs hidden-sm affix=top">
+            <ul class = "nav navlist">
+              
+              <li><a href = "#slide-1"> Tennis Ball Data</a></li>
+
+              <li><a href = "#slide-2"> Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-3"> Information about the Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-4"> Boxplots of the Tennis Ball Data</a></li>
+
+              <li><a href = "#slide-5"> Interaction Plots of the Tennis Ball Data</a></li>
+
+              <li><a href = "#slide-6"> Interaction Plot of the Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-7"> Interaction for Warpbreaks Data?</a></li>
+
+              <li><a href = "#slide-8"> Interaction Model for Tennis Ball Data</a></li>
+
+              <li><a href = "#slide-9"> Interaction Model for Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-10"> ANOVA Table for Tennis Ball Data Part 1</a></li>
+
+              <li><a href = "#slide-11"> ANOVA Table for the Warpbreaks Data Part 1</a></li>
+
+              <li><a href = "#slide-12"> Degrees of Freedom for Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-13"> ANOVA Table for Tennis Ball Data Part 2</a></li>
+
+              <li><a href = "#slide-14"> ANOVA Table for Warpbreaks Data Part 2</a></li>
+
+              <li><a href = "#slide-15"> SS and MS for Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-16"> ANOVA Table for Tennis Ball Data Part 3</a></li>
+
+              <li><a href = "#slide-17"> ANOVA Table for Warpbreaks Data Part 3</a></li>
+
+              <li><a href = "#slide-18"> F-statistics for Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-19"> ANOVA Table for Tennis Ball Data Part 4</a></li>
+
+              <li><a href = "#slide-20"> Testing for an Interaction in Tennis Ball Data</a></li>
+
+              <li><a href = "#slide-21"> Completed ANOVA Table for Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-22"> Beginning to Test Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-23"> Testing for an Interaction in Warpbreaks data</a></li>
+
+              <li><a href = "#slide-24"> Next step for Tennis Ball Data</a></li>
+
+              <li><a href = "#slide-25"> Hypotheses for Additive Model</a></li>
+
+              <li><a href = "#slide-26"> Checking Equal Variance for Tennis Ball Data</a></li>
+
+              <li><a href = "#slide-27"> Checking Equal Variance for the Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-28"> Comparing Equal Variance for the Two Data sets</a></li>
+
+              <li><a href = "#slide-29"> Checking Normality for Tennis ball Data</a></li>
+
+              <li><a href = "#slide-30"> Checking the Normality Assumption for the Warpbreaks Data</a></li>
+
+              <li><a href = "#slide-31"> Comparing Normality for the Two data Sets</a></li>
+
+              <li><a href = "#slide-32"> Conclusion part 1</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>  <!-- end sidebar -->
+
+    </div>  <!-- end row -->
+
+   
+      <!-- Footer -->
+      <footer id="top" role="footer">
+        <div class="container-fluid">
+          <span class="text-muted">Built by <a href="http://slidify.org/">Slidify</a>.  Styled using <a href="http://getbootstrap.com/">Bootstrap</a>.  Hosted on <a href="https://github.com/">GitHub</a>.</span>
+        </div>
+      </footer>
+
+  </div>  <!-- end container -->
 </body>
+  <script src="libraries/frameworks/bootstrap3/js/bootstrap.min.js"></script>
+  <script src="libraries/frameworks/bootstrap3/js/plugins.js"></script>
+  <script src="libraries/frameworks/bootstrap3/js/main.js"></script>
   <!-- Load Javascripts for Widgets -->
   <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
 <script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>

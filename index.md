@@ -2,17 +2,28 @@
 title       : Two-Way ANOVA
 subtitle    : Chapter 3
 author      : Stat 217
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
-widgets     : [bootstrap, quiz, mathjax]            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+today       : "Monday, February 23, 2015"
+framework   : bootstrap3
+highlighter : highlight.js 
+hitheme     : github      
+widgets     : [bootstrap, quiz, mathjax]
+layout      : deck3
+mode        : selfcontained 
+knit        : slidify::knit2slides
+assets      : 
+  css       : 
+    - "assets/css/table-styles.css"
+    - "assets/css/custom.css"
+    - "assets/css/moving_sidebar.css"
+    - "http://fonts.googleapis.com/css?family=Vollkorn"
+    - "http://fonts.googleapis.com/css?family=Droid%20Sans%20Mono"
 ---
+
 
 
 ## Tennis Ball Data
 
-Recall that in class six groups collected information on tennis ball diameter using three different methods.  The data are summarized below.  We'll use a significance level of 0.05 for all tests on these data.
+Last semester in Stat 217 six groups collected information on tennis ball diameter using three different methods.  Each group measured the diameter using two pencils, a string, and a zip tie.  The data are summarized below.  We'll use a significance level of 0.05 for all tests on these data.
 
 
 ```r
@@ -33,7 +44,7 @@ summary(tennis)
 ---
 ## Warpbreaks Data
 
-Weaverswere interested in the number of warp breaks per loom.  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.
+Weavers were interested in the number of warp breaks per loom.  They used two different types of wool (A or B) and set the looms to one of three different tensions (Low, Medium, or High).  The counts in each wool-tension group are displayed below.  We would like to find out if any wool-tension combination results in fewer breaks than the others.
 
 
 ```r
@@ -551,16 +562,12 @@ The Normal Q-Q plot looks okay for the warpbreaks data.  The histogram appears t
 ---
 ## Conclusion part 1
 
-Write down or email answers to these questions to your instructor.
+These questions are not required, but you should try to figure them out anyway.
 
 1. When looking at an interaction plot, what would suggest that an interaction is present?
 
 2. Even though we won't do multiple comparisons here, you can still look at the plots to attempt to answer the question of interest: does it appear that any wool-tension combinations resulted in fewer breaks?
 
-3. What are the distribution of the F-statistics for the warpbreaks data?  We found the statistics on slides 18 and 19.  Slide 20 is where I state the distribution of the statistics for the tennis ball data.
-
-4. Take a look back at slide 25.  Is the p-value testing whether method had an effect larger or smaller than the one you obtained in Project 2?  What did we do that caused this change.  I'm looking for you to explain why the Two-Way ANOVA gave us different results than the One-Way ANOVA.
-
-5. Do you have any comments or suggestions regrading this activity?
+3. What are the distribution of the F-statistics for the warpbreaks data? [ANOVA Table for Tennis Ball Data Part 4](#slide-19) is where I state the distribution for the Tennis Ball data.
 
 
