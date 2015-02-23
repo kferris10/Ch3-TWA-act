@@ -164,10 +164,10 @@ Here's a sparse ANOVA table for the tennis ball data that has not been filled in
 
 |id            |  Df|     Sum Sq|    Mean Sq|   F value|     Pr(>F)|
 |:-------------|---:|----------:|----------:|---------:|----------:|
-|method        |$df_A$|   $SS_A$|   $MS_A = SS_A / df_A$  |$F_{A} = MS_A / MS_E$ |          |
-|Group         |$df_B$|   $SS_B$|   $MS_B= SS_B / df_B$  |     $F_B = MS_B / MS_E$|          |
-|method:Group  |$df_{AB}$|$SS_{AB}$|$MS_{AB}= SS_{AB} / df_{AB}$| $F_{AB} = MS_{AB} / MS_E$|          |
-|Residuals     |$df_{E}$| $SS_E$|$MS_E= SS_E / df_E$     |          |          |
+|method        |$df_A$|   $SS_A$|   $MS_A$  |$F_{A} $ |          |
+|Group         |$df_B$|   $SS_B$|   $MS_B$  |     $F_B$|          |
+|method:Group  |$df_{AB}$|$SS_{AB}$|$MS_{AB}$| $F_{AB}$|          |
+|Residuals     |$df_{E}$| $SS_E$|$MS_E$     |          |          |
 |Total         |$df_T$| $SS_{Total}$|       |          |           |
 
 $df_A = J-1 = 3-1$ 
@@ -229,10 +229,10 @@ Here's the updated ANOVA table with a few numbers added to it.  We can fill in t
 
 |id            |  Df|     Sum Sq|    Mean Sq|   F value|     Pr(>F)|
 |:-------------|---:|----------:|----------:|---------:|----------:|
-|method        |2   |       0.84|   $MS_A = SS_A / df_A$  |$F_{A} = MS_A / MS_E$ |          |
-|Group         |5   |     $SS_B$|      0.340|     $F_B = MS_B / MS_E$|          |
-|method:Group  |10   |  $SS_{AB}$|      0.076| $F_{AB} = MS_{AB} / MS_E$|          |
-|Residuals     |63  |       3.83|$MS_E= SS_E / df_E$     |          |          |
+|method        |2   |       0.84|   $MS_A$  |$F_{A}$ |          |
+|Group         |5   |     $SS_B$|      0.340|     $F_B$|          |
+|method:Group  |10   |  $SS_{AB}$|      0.076| $F_{AB}$|          |
+|Residuals     |63  |       3.83|$MS_E$     |          |          |
 |Total         |80  | $SS_{Total}$|       |          |           |
 
 $SS_B = MS_B * df_B = 0.340*5 = 1.7$
@@ -291,9 +291,9 @@ The F-statistics for each of the three rows are just the $MS$ for that row divid
 
 |id            |  Df|     Sum Sq|    Mean Sq|   F value|     Pr(>F)|
 |:-------------|---:|----------:|----------:|---------:|----------:|
-|method        |2   |       0.84|   0.418   |$F_{A} = MS_A / MS_E$ |          |
-|Group         |5   |     1.7   |      0.340|     $F_B = MS_B / MS_E$|          |
-|method:Group  |10   |      0.760 |      0.076| $F_{AB} = MS_{AB} / MS_E$|          |
+|method        |2   |       0.84|   0.418   |$F_{A}$ |          |
+|Group         |5   |     1.7   |      0.340|     $F_B$|          |
+|method:Group  |10   |      0.760 |      0.076| $F_{AB}$|          |
 |Residuals     |63  |       3.83| 0.061     |          |          |
 |Total         |80  | 7.13      |       |          |           |
 
